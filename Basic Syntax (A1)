@@ -1,0 +1,13 @@
+
+;; Question 2 (Mathematical Operations and Function Writing)
+
+;; ----------------- 2a -----------------
+
+;; (volume r h) produces the volume of a cone based on the 
+;;   parameters [r h] that represent the radius of the base
+;;   and the height of the cone, respectively
+;; volume: Num Num -> Num 
+;; requires: r, h > 0
+
+(define (volume r h)
+  (* (/ 1 3) pi (sqr r) h))
