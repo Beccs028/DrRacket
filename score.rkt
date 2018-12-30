@@ -1,0 +1,41 @@
+;; The first three lines of this file were inserted by DrRacket. They record metadata
+;; about the language level of this file in a form that our tools can easily process.
+#reader(lib "htdp-beginner-reader.ss" "lang")((modname score) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #t)))
+;;
+;; *****************************************
+;;  MO JIE (REBECCA) Ma (20772123)
+;;  CS 135 Fall 2018
+;;  Assignment 02, Question 1
+;; *****************************************
+;;
+
+;; Constants for the Point Values:
+(define one-line 40)
+(define two-line 100)
+(define three-line 300)
+(define four-line 1200)
+
+;; Example:
+(check-expect (tetris-score 4 17) 0)
+
+
+;; (tetris-score current-level lines-eliminated) outputs the score for 
+;;   a game of tetris based on [current-level lines-eliminated]
+;; tetris-score: Int Int -> Int
+;; requires: current-level > 0
+;;           lines-eliminated > 0
+(define (tetris-score current-level lines-eliminated)
+  (cond
+    [(= lines-eliminated 1 ) (* (+ current-level 1) one-line)]
+    [(= lines-eliminated 2 ) (* (+ current-level 1) two-line)]
+    [(= lines-eliminated 3 ) (* (+ current-level 1) three-line)]
+    [(= lines-eliminated 4 ) (* (+ current-level 1) four-line)]
+    [else 0]))
+
+;; Tests:
+(check-expect (tetris-score 5 6) 0)
+(check-expect (tetris-score 8 6) 0)
+(check-expect (tetris-score 3 1) 160)
+(check-expect (tetris-score 15 2) 1600)
+(check-expect (tetris-score 6 3) 2100)
+(check-expect (tetris-score 37 4) 45600)
